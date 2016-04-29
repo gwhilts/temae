@@ -1,0 +1,30 @@
+The app was developed using PostgreSQL, but should be
+compatable with just about any SQL database supported by
+ActiveRecord.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+
+development:
+  <<: *default
+  database: temae_dev
+  username: <enter_username>
+  password: <enter_password>
+
+test: &test
+  <<: *default
+  database: temae_test
+  username: <enter_username>
+  password: <enter_password>
+
+production:
+  <<: *default
+  database: temae_production
+  username: <enter_username>
+  password: <enter_password>
+
+cucumber:
+  <<: *test
