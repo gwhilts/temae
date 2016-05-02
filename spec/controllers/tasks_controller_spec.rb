@@ -38,6 +38,7 @@ RSpec.describe TasksController, type: :controller do
 
   describe "GET #index" do
     it "assigns all tasks as @tasks" do
+      sign_in
       task = Task.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:tasks)).to eq([task])
@@ -54,6 +55,7 @@ RSpec.describe TasksController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new task as @task" do
+      sign_in
       get :new, {}, valid_session
       expect(assigns(:task)).to be_a_new(Task)
     end
