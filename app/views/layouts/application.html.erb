@@ -1,19 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Temae: Enlighted Task Management" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
+  <body class="has-off-canvas">
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <!-- off-canvas title bar for 'small' screen -->
+        <div class="title-bar">
+          <div class="title-bar-left">
+            <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+            <span class="title-bar-title">Temae</span>
+          </div>
+          <div class="title-bar-right">
+            <a id="logout-button" class="tiny alert button">log out</a>
+          </div>
+        </div>
 
-  <body>
+        <!-- off-canvas left menu -->
+        <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+              <ul class="vertical accordion-menu menu" data-accordion-menu>
+                <li id="inbox-menu-item">
+                  <a href="#inbox">Inbox</a>
+                </li>
+                <li>
+                  <a href="#context">Context</a>
+                  <ul class="menu vertical sublevel-1">
+                    <li><a class="subitem" href="#">All</a></li>
+                    <li><a class="subitem" href="#">Email</a></li>
+                    <li><a class="subitem" href="#">Errands</a></li>
+                    <li><a class="subitem" href="#">Home</a></li>
+                    <li><a class="subitem" href="#">Office</a></li>
+                    <li><a class="subitem" href="#">Phone</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#projects">Projects</a>
+                  <ul class="menu vertical sublevel-1">
+                    <li><a class="subitem" href="#">All</a></li>
+                    <li><a class="subitem" href="#">Bills</a></li>
+                    <li><a class="subitem" href="#">Blog</a></li>
+                    <li><a class="subitem" href="#">Hana</a></li>
+                    <li><a class="subitem" href="#">Remodel</a></li>
+                    <li><a class="subitem" href="#">Shine</a></li>
+                    <li><a class="subitem" href="#">Temae</a></li>
+                  </ul>
+                </li>
+              </ul>
+        </div>
 
-    <%= yield %>
-
+        <!-- original content goes in this container -->
+        <div class="off-canvas-content" data-off-canvas-content>
+          <div class="row column">
+            <%= yield %>
+          </div>
+        </div>
+      <!-- close wrapper, no more content after this -->
+      </div>
+    </div>
   </body>
 </html>
+   
