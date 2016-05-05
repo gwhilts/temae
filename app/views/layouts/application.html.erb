@@ -20,7 +20,7 @@
             <span class="title-bar-title">Temae</span>
           </div>
           <div class="title-bar-right">
-            <a id="logout-button" class="tiny alert button">log out</a>
+            <%= link_to('log out', destroy_user_session_path, method: :delete, id: 'logout-button', class: 'tiny alert button') %>
           </div>
         </div>
 
