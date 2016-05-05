@@ -1,0 +1,75 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+
+
+// variables
+$accordion-bg: #4d5158;
+$accordion-sub-bg: #35383d;
+$accordion-separator: #41444a;
+
+// background for inbox menu item
+#inbox-menu-item {
+  background: $accordion-bg;
+}
+
+// background for main accordion items
+.is-accordion-submenu-parent a {
+  background: $accordion-bg;
+}
+
+// background for sub accordion items
+.is-accordion-submenu a,
+.is-accordion-submenu-parent a:hover,
+#inbox-menu-item:hover {
+  background: $accordion-sub-bg;
+}
+
+.is-accordion-submenu a:hover {
+  background: $accordion-bg;
+}
+
+// creates classes for nested elements, sub-item-*
+@for $i from 1 through 3 {
+  .sublevel-#{$i} {
+    text-indent: 0rem + $i;
+  }
+}
+
+[data-accordion-menu] {
+  a {
+    color: #fff;
+    // sets accodion item separator color
+    box-shadow: inset 0 -1px $accordion-separator;
+    
+    &::after {
+      // sets accodion arrow color and direction
+      border-color: #fff transparent transparent;
+    }
+  }
+}
+
+// padding for each list item
+.menu > li:not(.menu-text) > a {
+  padding: 1.2rem 1rem;
+}
+
+// logout button
+
+#logout-button {
+  margin: 0;
+}
