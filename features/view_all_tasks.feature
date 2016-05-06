@@ -24,6 +24,5 @@ Feature: View All Tasks
     When I visit the homepage
     Then I should see a list of all my tasks
     And they are grouped by context
-    And they sorted by due date, start date
 
 
