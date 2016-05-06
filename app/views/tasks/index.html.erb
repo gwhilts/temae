@@ -1,31 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tasks</h1>
+<h1>All Tasks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start</th>
-      <th>Due</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% current_context = "" -%>
+<% @tasks.each do |task| -%>
+  <% if task.context_id != current_context -%>
+    <% unless current_context == "" -%>
+      </div>
+    <% end -%>
+    <% current_context = task.context_id -%>
+  
+  <div class="row context"><h4 class="context_name"><%= task.context_name %></h4>
+     <% end -%>
+     <div class="task row">
+        <div class="small-12 medium-4 columns name"><%= task.name %></div>
+        <div class="small-12 medium-4 columns project"><%= task.project_name %></div>
+        <div class="small-6 medium-2 columns start">start: <%= task.start.to_formatted_s(:short) %></div>
+        <div class="small-6 medium-2 columns due">due: <%= task.due ? task.due.to_formatted_s(:short) : "" %></div>
+      </div>
+  <% end -%>
+  </div>
 
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.start %></td>
-        <td><%= task.due %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<br />
 
 <%= link_to 'New Task', new_task_path %>
