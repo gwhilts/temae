@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Zurb Foundation CSS framework (https://github.com/zurb/foundation-rails)
 gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'
 
 group :development, :test do
   gem 'byebug'

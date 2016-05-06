@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All Tasks</h1>
-
+<div class="page-title row">
+  <h2>All Tasks</h2>
+</div>
 <% current_context = "" -%>
 <% @tasks.each do |task| -%>
   <% if task.context_id != current_context -%>
@@ -13,10 +14,10 @@
   <div class="row context"><h4 class="context_name"><%= task.context_name %></h4>
      <% end -%>
      <div class="task row">
-        <div class="small-12 medium-4 columns name"><%= task.name %></div>
-        <div class="small-12 medium-4 columns project"><%= task.project_name %></div>
-        <div class="small-6 medium-2 columns start">start: <%= task.start.to_formatted_s(:short) %></div>
-        <div class="small-6 medium-2 columns due">due: <%= task.due ? task.due.to_formatted_s(:short) : "" %></div>
+        <div class="small-11 medium-7 columns name"><%= task.name %></div>
+        <div class="small-0 medium-2 columns project"><%= task.project_name %></div>
+        <div class="small-0 medium-2 columns due"><i class="fi-calendar"></i> <%= task.due ? task.due.to_formatted_s(:short) : "" %></div>
+        <div class="small-1 medium-1 columns start"><i class="fi-eye"></i></div>
       </div>
   <% end -%>
   </div>

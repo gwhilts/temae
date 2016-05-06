@@ -16,6 +16,8 @@
 
  */
 
+// Foundation Icons
+@import 'foundation-icons';
 
 // variables
 $accordion-bg: #4d5158;
@@ -60,6 +62,10 @@ $accordion-separator: #41444a;
       // sets accodion arrow color and direction
       border-color: #fff transparent transparent;
     }
+    i.context-icon { 
+      vertical-align: top;
+    }
+
   }
 }
 
@@ -73,3 +79,4 @@ $accordion-separator: #41444a;
 #logout-button {
   margin: 0;
 }
+
