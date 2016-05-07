@@ -60,6 +60,23 @@
         <!-- original content goes in this container -->
         <div class="off-canvas-content" data-off-canvas-content>
           <div class="row column">
+             <% if notice.present? %>
+               <div class="callout success" data-closable>
+                 <%= notice %>
+                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                   <span aria-hidden="true"><i class="fi-x-circle"></i></span>
+                 </button>
+               </div>
+             <% end -%>
+  
+            <% if alert.present? %>
+              <div class="callout alert" data-closable>
+                <%= alert %>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true"><i class="fi-x-circle"></i></span>
+                </button>
+              </div>
+            <% end -%>
             <%= yield %>
           </div>
         </div>
