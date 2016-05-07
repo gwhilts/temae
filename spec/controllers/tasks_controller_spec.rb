@@ -34,21 +34,6 @@ RSpec.describe TasksController, type: :controller do
     sign_in
   end
 
-  describe "GET #index" do
-    it "assigns all tasks as @tasks" do
-      task1 = Task.create! valid_attributes
-      task2 = Task.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:tasks)).to eq([task1, task2])
-    end
-    it "only shows tasks belonging to current user" do
-      task1 = Task.create!(valid_attributes.merge(user_id: 1))
-      task2 = Task.create!(valid_attributes.merge(user_id: 2))
-      get :index, {}, valid_session
-      expect(assigns(:tasks)).to eq([task1])
-    end
-  end
-
   describe "GET #show" do
     it "assigns the requested task as @task" do
       task = Task.create! valid_attributes

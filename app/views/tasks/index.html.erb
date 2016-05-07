@@ -3,24 +3,20 @@
 <div class="page-title row">
   <h2>All Tasks</h2>
 </div>
-<% current_context = "" -%>
-<% @tasks.each do |task| -%>
-  <% if task.context_id != current_context -%>
-    <% unless current_context == "" -%>
-      </div>
-    <% end -%>
-    <% current_context = task.context_id -%>
-  
-  <div class="row context"><h4 class="context_name"><%= task.context_name %></h4>
-     <% end -%>
-     <div class="task row">
-        <div class="small-11 medium-7 columns name"><%= task.name %></div>
-        <div class="small-0 medium-2 columns project"><%= task.project_name %></div>
-        <div class="small-0 medium-2 columns due"><i class="fi-calendar"></i> <%= task.due ? task.due.to_formatted_s(:short) : "" %></div>
-        <div class="small-1 medium-1 columns start"><i class="fi-eye"></i></div>
-      </div>
-  <% end -%>
+
+<% @tasks_by_context.each do |context| -%>
+  <div class="context row">
+    <h4 class="context-name"><%= context.name %></h4>
+      <% context.tasks.each_with_index do |task, index| -%>
+        <div class="task row">
+          <div class="small-11 medium-7 columns name"><input type="checkbox" /> <%= task.name %></div>
+          <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
+          <div class="hide-for-small-only medium-2 columns due" style="text-align: right;"><%= task.due ? task.due.to_formatted_s(:short) : "" %> <i class="fi-calendar"></i></div>
+          <div class="small-1 medium-1 columns start"><i class="fi-eye"></i></div>
+        </div>
+      <% end -%>
   </div>
+<% end =%>
 
 <br />
 
