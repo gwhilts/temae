@@ -15,6 +15,14 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :context %><br/>
+    <%= collection_select(:task, :context_id, @contexts, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :project %><br/>
+    <input type="text" value="miscellaneous" />
+  </div>
   <div class="row collapse date field datePicker" id="dueDatePicker" data-date-format="dd MM yyyy" style="max-width:200px;">
     <div class="small-2 columns">	
       <span class="prefix"><i class="fi fi-calendar"></i></span>

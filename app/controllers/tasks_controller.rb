@@ -19,6 +19,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @contexts = Context.all
   end
 
   # POST /tasks
