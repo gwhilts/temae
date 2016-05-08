@@ -15,15 +15,32 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :start %><br>
-    <%= f.date_select :start %>
+  <div class="row collapse date field datePicker" id="dueDatePicker" data-date-format="dd MM yyyy" style="max-width:200px;">
+    <div class="small-2 columns">	
+      <span class="prefix"><i class="fi fi-calendar"></i></span>
+    </div>
+    <div class="small-10 columns">
+      <%= f.text_field :start %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :due %><br>
-    <%= f.date_select :due %>
+  <div class="row collapse date field datePicker" id="dueDatePicker" data-date-format="dd MM yyyy" style="max-width:200px;">
+    <div class="small-2 columns">	
+      <span class="prefix"><i class="fi fi-calendar"></i></span>
+    </div>
+    <div class="small-10 columns">
+      <%= f.text_field :due %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>
-  </div>
+  </div> 
 <% end %>
+
+
+
+<script>
+$(function(){
+  $('.datePicker').fdatepicker();
+});
+</script>
+
