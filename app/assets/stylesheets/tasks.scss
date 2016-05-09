@@ -5,3 +5,31 @@
 #task-form {
   margin: 2em;
 }
+
+.task-group {
+  margin: 0 0 1.5em 0;
+}
+
+.task-group.empty {
+  font-style: oblique;
+  text-indent: 2em;
+}
+
+.task-group-name {
+  font-weight: bold;
+  border-bottom: thick solid #666;
+}
+
+.task-group .task {
+  padding: .8em 1em 0;
+}
+
+.task-group .task:nth-child(odd) {
+  background-color: #eee;
+}
+
+.task > .due,
+.task > .info,
+.task > .edit {
+  text-align: center;
+}

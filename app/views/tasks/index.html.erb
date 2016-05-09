@@ -1,13 +1,12 @@
-<div class="page-title row">
-  <h2>All Tasks</h2>
+<div class="row">
+  <div id="page-title" class="small-4 small-centered medium-uncentered">All Tasks</div>
 </div>
 
 <% @tasks_by_context.each do |context| -%>
   <div class="context row">
-    <h4 class="context-name"><%= context.name %></h4>
+    <h5 class="task-group-name"><%= context.name %></h5>
     <%= render partial: 'task_list', locals: { tasks: context.tasks } %>
   </div>
-  <hr />
 <% end =%>
 
 <br />

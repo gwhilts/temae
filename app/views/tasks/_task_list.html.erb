@@ -1,8 +1,15 @@
+<% unless tasks.empty? -%>
+  <div class="task-group">
     <% tasks.each_with_index do |task, index| -%>
-      <div class="task row">
-        <div class="small-11 medium-7 columns name"><input type="checkbox" /> <%= task.name %></div>
+      <div class="task row collapse">
+        <div class="small-10 medium-6 columns name"><input type="checkbox" /> <%= task.name %></div>
         <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
-        <div class="hide-for-small-only medium-2 columns due" style="text-align: right;"><%= task.due ? task.due.to_formatted_s(:short) : "" %> <i class="fi-calendar"></i></div>
-        <div class="small-1 medium-1 columns start"><i class="fi-eye"></i></div>
+        <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>
+        <div class="small-1 medium-1 columns info"><i class="fi-eye"></i></div>
+        <div class="small-1 medium-1 columns edit"><i class="fi-pencil"></i></div>
       </div>
     <% end -%>
+  </div>
+<% else -%>
+  <div class="task-group empty">None</div>
+<% end -%>
