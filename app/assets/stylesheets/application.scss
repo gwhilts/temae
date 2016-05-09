@@ -22,8 +22,7 @@
 // Main
 
 #main {
-  padding: 2em;
-}
+  padding: 2em;}
 
 #page-title {
   font-size: 2em;
@@ -34,7 +33,8 @@
 
 // Off-Canvas Menu
 
-#offCanvasLeft {
+.off-canvas-wrapper,
+.off-canvas-wrapper-inner {
   height: 100%
 }
 
