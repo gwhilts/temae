@@ -1,0 +1,8 @@
+    <% tasks.each_with_index do |task, index| -%>
+      <div class="task row">
+        <div class="small-11 medium-7 columns name"><input type="checkbox" /> <%= task.name %></div>
+        <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
+        <div class="hide-for-small-only medium-2 columns due" style="text-align: right;"><%= task.due ? task.due.to_formatted_s(:short) : "" %> <i class="fi-calendar"></i></div>
+        <div class="small-1 medium-1 columns start"><i class="fi-eye"></i></div>
+      </div>
+    <% end -%>
