@@ -5,8 +5,12 @@
         <div class="small-10 medium-6 columns name"><input type="checkbox" /> <%= task.name %></div>
         <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
         <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>
-        <div class="small-1 medium-1 columns info"><i class="fi-eye"></i></div>
-        <div class="small-1 medium-1 columns edit"><i class="fi-pencil"></i></div>
+        <div class="small-1 medium-1 columns info">
+          <%= link_to '<i class="fi-eye"></i>'.html_safe, task %>
+        </div>
+        <div class="small-1 medium-1 columns edit">
+          <%= link_to '<i class="fi-pencil"></i>'.html_safe, edit_task_path(task) %>
+        </div>
       </div>
     <% end -%>
   </div>
