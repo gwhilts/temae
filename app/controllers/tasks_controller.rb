@@ -19,7 +19,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @contexts = Context.all
+    @contexts = Context.all.where(user_id: current_user.id)
   end
 
   # POST /tasks
@@ -65,7 +65,7 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = Task.where(id: params[:id], user_id: current_user.id).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
