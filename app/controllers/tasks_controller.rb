@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_contexts, only: [:new, :edit]
 
   # GET /tasks
   # GET /tasks.json
@@ -19,7 +20,6 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @contexts = Context.all.where(user_id: current_user.id)
   end
 
   # POST /tasks
@@ -66,6 +66,10 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.where(id: params[:id], user_id: current_user.id).first
+    end
+
+    def set_contexts
+      @contexts = Context.all.where(user_id: current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
