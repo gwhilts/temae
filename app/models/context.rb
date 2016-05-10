@@ -1,14 +1,14 @@
 class Context < ActiveRecord::Base
   # Icons
   ICONS = {
-    'github'   => '<i class="fi-social-github"></i>',
-    'home'     => '<i class="fi-home"></i>',
-    'office'   => '<i class="fi-torso-business"></i>',
-    'phone'    => '<i class="fi-telephone"></i>',
-    'errand'   => '<i class="fi-marker"></i>',
-    'email'    => '<i class="fi-mail"></i>',
-    'shopping' => '<i class="fi-shopping-cart"></i>',
-    'generic'  => '<i class="fi-list-thumbnails"></i>'
+    'github'   => 'fi-social-github',
+    'home'     => 'fi-home',
+    'office'   => 'fi-torso-business',
+    'phone'    => 'fi-telephone',
+    'errand'   => 'fi-marker',
+    'email'    => 'fi-mail',
+    'shopping' => 'fi-shopping-cart',
+    'generic'  => 'fi-list-thumbnails'
   }
   
   # Relations
@@ -24,5 +24,11 @@ class Context < ActiveRecord::Base
   validates :icon, inclusion: { in: ICONS.keys, 
                                 message: "must be one of: %{ ICONS.keys }." 
                               }
+
+  after_initialize :set_defaults 
+  
+  def set_defaults
+    self.icon ||= 'generic'
+  end
 
 end
