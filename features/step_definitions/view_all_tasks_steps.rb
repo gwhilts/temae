@@ -13,43 +13,43 @@ end
 
 Given(/^Fred has several tasks$/) do
 
-  user_id = User.find_by(email: 'fred@fred.net').id
+  user = User.find_by(email: 'fred@fred.net')
 
   tasks = [{ name:       'Wash Car',
              start:      Time.utc(2016, 5, 7),
              due:        Time.utc(2016, 5, 9),
-             context_id: 2,
-             user_id:    user_id
+             context:    user.contexts.third,
+             user:       user
            },
            { name:       'Pick up library book',
              start:      Time.utc(2016, 5, 7),
              due:        Time.utc(2016, 5, 10),
-             context_id: 2,
-             user_id:    user_id
+             context:    user.contexts.third,
+             user:       user
            },
            { name:       'Return library book',
              start:      Time.utc(2016, 5, 11),
              due:        Time.utc(2016, 5, 24),
-             context_id: 2,
-             user_id:    user_id
+             context:    user.contexts.second,
+             user:       user
            },
            { name:       'Submit Pull Request',
              start:      Time.utc(2016, 5, 8),
              due:        Time.utc(2016, 5, 8),
-             context_id: 3,
-             user_id:    user_id
+             context:    user.contexts.second,
+             user:       user
            },
            { name:       'Fix Issue #382',
              start:      Time.utc(2016, 5, 7),
              due:        Time.utc(2016, 5, 7),
-             context_id: 3,
-             user_id:    user_id
+             context:    user.contexts.first,
+             user:       user
            },
            { name:       'Replace Furnace Filter',
              start:      Time.utc(2016, 5, 1),
              due:        Time.utc(2016, 5, 31),
-             context_id: 1,
-             user_id:    user_id
+             context:    user.contexts.second,
+             user:       user
            }
           ]
    tasks.each do |task|
