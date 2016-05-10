@@ -3,10 +3,12 @@
 </div>
 
 <% @tasks_by_context.each do |context| -%>
-  <div class="context row">
-    <h5 class="task-group-name"><%= context.name %></h5>
-    <%= render partial: 'task_list', locals: { tasks: context.tasks } %>
-  </div>
+  <% unless context.tasks.empty? -%>
+    <div class="context row">
+      <h5 class="task-group-name"><%= context.name %></h5>
+      <%= render partial: 'task_list', locals: { tasks: context.tasks } %>
+    </div>
+  <% end =%>
 <% end =%>
 
 <br />
