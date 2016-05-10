@@ -1,6 +1,7 @@
 class Context < ActiveRecord::Base
   # Icons
   ICONS = {
+    'inbox'    => 'fi-download',
     'github'   => 'fi-social-github',
     'home'     => 'fi-home',
     'office'   => 'fi-torso-business',

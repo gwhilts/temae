@@ -3,6 +3,27 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :tasks
-  has_many :contexts
+  
+  # Relations
+  has_many :tasks, dependent: :destroy
+  has_many :contexts, dependent: :destroy
+
+  # Callbacks
+  after_create :create_default_contexts
+
+  private
+
+  def create_default_contexts
+    [
+      { name: 'Inbox',   user: self, icon: 'inbox' },
+      { name: 'Email',   user: self, icon: 'email' },
+      { name: 'Errands', user: self, icon: 'errand' },
+      { name: 'Home',    user: self, icon: 'home' },
+      { name: 'Phone',   user: self, icon: 'phone' },
+      { name: 'Office',  user: self, icon: 'office' },
+    ].each do |context|
+      Context.create! context
+    end
+  end
+
 end
