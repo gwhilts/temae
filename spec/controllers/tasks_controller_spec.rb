@@ -10,8 +10,8 @@ RSpec.describe TasksController, type: :controller do
       name:       'Wash car',
       start:      Time.utc(2016, 5, 7),
       due:        Time.utc(2016, 5, 9),
-      context_id: 2,
-      user_id:    1
+      context_id: @user.contexts.first,
+      user_id:    @user.id
     }
   }
 
@@ -20,8 +20,8 @@ RSpec.describe TasksController, type: :controller do
       name:       '',
       start:      Time.utc(2016, 5, 7),
       due:        Time.utc(2016, 5, 9),
-      context_id: 2,
-      user_id:    1
+      context_id: @user.contexts.first,
+      user_id:    @user.id
     }
   }
 
@@ -31,7 +31,8 @@ RSpec.describe TasksController, type: :controller do
   let(:valid_session) { {} }
 
   before(:each) do
-    sign_in
+    @user = create(:user)
+    sign_in(@user)
   end
 
   describe "GET #show" do
@@ -97,8 +98,8 @@ RSpec.describe TasksController, type: :controller do
           name:       'Wash car',
           start:      Time.utc(2016, 5, 7),
           due:        Time.utc(2016, 5, 10),
-          context_id: 2,
-          user_id:    1
+          context_id: @user.contexts.first,
+          user_id:    @user.id
         }
       }
 
