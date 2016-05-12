@@ -101,13 +101,15 @@ $accordion-separator: #41444a;
   margin: 0;
 }
 
-// top bar
+// title bar
 
-a {
-  color: #fff;
-}
+.title-bar {
+  a {
+    color: #fff;
+  }
 
-a:hover {
-  color: #ccc;
+  a:hover {
+    color: #ccc;
+  }
 }
 
