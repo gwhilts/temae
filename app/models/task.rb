@@ -2,7 +2,7 @@ class Task < ActiveRecord::Base
   belongs_to :context
   belongs_to :user
 
-  validates :name, presence: true
+  validates :name, :user, :context, presence: true
 
   def project_name
     # stubbing out with canned answer
