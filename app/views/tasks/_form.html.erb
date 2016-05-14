@@ -23,18 +23,20 @@
     <div class="small-2 columns"><%= f.label :project, class: 'text-right middle' %></div>
     <div class="small-10 columns"><input type="text" value="miscellaneous" /></div>
   </div>
-  <div id="dueDatePicker" class="row date field datePicker" data-date-format="dd MM yyyy">
-    <div class="small-2 columns prefix"><%= f.label :start, class: 'text-right middle' %></div>
-    <div class="small-10 columns">
-      <%= f.text_field :start %>
+  <div class="row">
+    <div id="dueDatePicker" class="date field datePicker" data-date-format="dd MM yyyy">
+      <div class="small-2 columns prefix"><%= f.label :start, class: 'text-right middle' %></div>
+      <div class="small-4 columns" style="float: left;">
+        <%= f.text_field :start %>
+      </div>
     </div>
+    <div id="dueDatePicker" class="date field datePicker" data-date-format="dd MM yyyy">
+      <div class="small-1 columns prefix"><%= f.label :due, class: 'text-right middle' %></div>
+      <div class="small-5 columns">
+        <%= f.text_field :due %>
+      </div>
+    </div> 
   </div>
-  <div id="dueDatePicker" class="row date field datePicker" data-date-format="dd MM yyyy">
-    <div class="small-2 columns prefix"><%= f.label :due, class: 'text-right middle' %></div>
-    <div class="small-10 columns">
-      <%= f.text_field :due %>
-    </div>
-  </div> 
   <div class="row">
     <div class="actions small-3 small-centered columns text-right">
       <%= f.submit %>
