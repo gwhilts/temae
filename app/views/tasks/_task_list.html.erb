@@ -1,6 +1,6 @@
 <div class="task-group">
   <% tasks.each_with_index do |task, index| -%>
-    <div class="task row collapse">
+    <div class="task row collapse due_<%= task_date_status(task.due) -%>">
       <div class="small-10 medium-6 columns name"><input type="checkbox" /> <%= task.name %></div>
       <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
       <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>

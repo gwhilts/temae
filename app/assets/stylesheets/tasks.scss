@@ -37,3 +37,11 @@
 .task a {
   color: #0a0a0a;
 }
+
+.task.row.due_past {
+  color: #cc0000;
+}
+
+.task.row.due_today {
+  color: #cc9900;
+}
