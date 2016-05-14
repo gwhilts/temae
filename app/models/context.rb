@@ -30,6 +30,14 @@ class Context < ActiveRecord::Base
   after_initialize :set_defaults 
   before_destroy :check_for_tasks
   
+  # Class Methods
+
+  def self.menu_for(user_id)
+    menu = Context.where(user_id: user_id).pluck(:name)
+    menu.delete "Inbox"
+    menu.sort.unshift "Inbox"
+  end
+
   # Private Methods
   private
 
