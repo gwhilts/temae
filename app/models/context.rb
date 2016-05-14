@@ -26,10 +26,22 @@ class Context < ActiveRecord::Base
                                 message: "must be one of: %{ ICONS.keys }." 
                               }
 
+  # Callbacks
   after_initialize :set_defaults 
+  before_destroy :check_for_tasks
   
+  # Private Methods
+  private
+
   def set_defaults
     self.icon ||= 'generic'
+  end
+
+  def check_for_tasks
+    if tasks.count > 0
+      errors[:base] << "Cannot delete a context that contains open tasks"
+      return false
+    end
   end
 
 end
