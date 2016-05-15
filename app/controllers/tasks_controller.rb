@@ -1,12 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_contexts, only: [:new, :edit]
-  before_action :set_context_menu
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks_by_context = Context.all.where(user_id: current_user.id).order(:id).includes(:tasks)
+    set_contexts_with_tasks
   end
 
   # GET /tasks/1
@@ -65,17 +64,24 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Sets ivar @task to Task with param :id, belonging to Devise current_user
     def set_task
       @task = Task.where(id: params[:id], user_id: current_user.id).first
     end
 
+    # Loads the set of Contexts belonging to the current user.
+    # The first Context is the user's Inbox, others follow alphabetically.
     def set_contexts
-      @contexts = Context.all.where(user_id: current_user.id)
+      inbox  = Context.where(user: current_user, name: 'Inbox').first
+      others = Context.where(user: current_user).where.not(name: 'Inbox').order(:name)
+      @contexts = others.unshift inbox
     end
 
-    def set_context_menu
-      @context_menu = Context.menu_for(current_user)
+    # Same as #set_contexts, with eagerly loaded Tasks to avoid N+1 issues
+    def set_contexts_with_tasks
+      inbox  = Context.where(user: current_user, name: 'Inbox').includes(:tasks).first
+      others = Context.where(user: current_user).where.not(name: 'Inbox').order(:name).includes(:tasks)
+      @contexts = others.unshift inbox
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

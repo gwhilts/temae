@@ -17,7 +17,7 @@
   </div>
   <div id="task-context" class="field row">
     <div class="small-2 columns"><%= f.label :context, class: 'text-right middle' %></div>
-    <div class="small-10 columns"><%= context_selector(@context_menu, @task) %></div>
+    <div class="small-10 columns"><%= collection_select(:task, :context_id, @contexts, :id, :name) %></div>
   </div>
   <div id="task-project" class="field row">
     <div class="small-2 columns"><%= f.label :project, class: 'text-right middle' %></div>
