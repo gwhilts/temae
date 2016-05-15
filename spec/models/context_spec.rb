@@ -37,22 +37,15 @@ RSpec.describe Context, type: :model do
   end
 
   describe '::menu_for(user)' do
-    it "returns an Array of the users contexts" do
+    it "returns an Hash of :id :name pairs for each of the user's contexts" do
       u = user;
       # User creation will also create default
       # Contexts "Inbox", "Email", "Errands", "Home",
       # and "Office"
+      errands = u.contexts.where(name: 'Errands').first
       Context.create(name: 'Foo', user: u)
-      Context.create(name: 'Bar', user: u)
-      expect(Context.menu_for(u)).to eq(['Inbox', 
-                                         'Bar', 
-                                         'Email', 
-                                         'Errands', 
-                                         'Foo',
-                                         'Home',
-                                         'Office',
-                                         'Phone'
-      ])
+      Context.create(name: 'Bar', user: u, parent: errands)
+      expect(Context.menu_for(u).values).to eq(["Inbox", "Bar", "Email", "Errands", "Foo", "Home", "Office", "Phone"])
     end
   end
 

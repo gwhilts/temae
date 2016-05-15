@@ -22,20 +22,18 @@ class Context < ActiveRecord::Base
 
   # Validations
   validates :name, :user, :icon, presence: true
-  validates :icon, inclusion: { in: ICONS.keys, 
-                                message: "must be one of: %{ ICONS.keys }." 
-                              }
+  validates :icon, inclusion: { in: ICONS.keys, message: "must be one of: %{ ICONS.keys }." }
 
   # Callbacks
   after_initialize :set_defaults 
   before_destroy :check_for_tasks
   
   # Class Methods
-
   def self.menu_for(user_id)
-    menu = Context.where(user_id: user_id).pluck(:name)
-    menu.delete "Inbox"
-    menu.sort.unshift "Inbox"
+    inbox    = Context.where(user_id: user_id, name: "Inbox").pluck(:id, :name).to_h
+    others   = Context.where(user_id: user_id).where.not(name: 'Inbox').order(:name)
+    menu     = (others.collect { |c| {c.id => c.name} }).inject { | m = {}, c | m.merge c }
+    inbox.merge menu
   end
 
   # Private Methods
