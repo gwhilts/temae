@@ -22,7 +22,7 @@ class Context < ActiveRecord::Base
 
   # Validations
   validates :name, :user, :icon, presence: true
-  validates :icon, inclusion: { in: ICONS.keys, message: "must be one of: %{ ICONS.keys }." }
+  validates :icon, inclusion: { in: ICONS.keys, message: "must be one of: #{ ICONS.keys }." }
 
   # Callbacks
   after_initialize :set_defaults 

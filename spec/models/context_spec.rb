@@ -11,7 +11,7 @@ RSpec.describe Context, type: :model do
   describe 'validations' do
     before(:each) do
       @c = context
-      @c.icon = nil
+      @c.user, @c.name, @c.icon = nil
       @c.valid?
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Context, type: :model do
     end
 
     it "validates presence of icon" do
-      expect(@c.errors).to have_key(:user)
+      expect(@c.errors).to have_key(:icon)
     end
   end
 
