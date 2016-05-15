@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_contexts, only: [:new, :edit]
+  before_action :set_context_menu
 
   # GET /tasks
   # GET /tasks.json
@@ -71,6 +72,10 @@ class TasksController < ApplicationController
 
     def set_contexts
       @contexts = Context.all.where(user_id: current_user.id)
+    end
+
+    def set_context_menu
+      @context_menu = Context.menu_for(current_user)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
