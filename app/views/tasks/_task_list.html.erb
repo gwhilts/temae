@@ -1,7 +1,10 @@
 <div class="task-group">
   <% tasks.each_with_index do |task, index| -%>
-    <div class="task row collapse due_<%= task_date_status(task.due) -%> <%= task_complete_status(task.complete?) -%>">
-      <div class="small-10 medium-6 columns name"><a class="status">&nbsp;</a> <%= task.name %></div>
+    <div id="task_<%= task.id -%>" class="task row collapse due_<%= task_date_status(task.due) -%> <%= task_complete_status(task.complete?) -%>">
+      <div class="small-10 medium-6 columns name">
+        <%= link_to " ", task_toggle_path(id: task.id), remote: true, method: :get, class: 'status' -%>
+        <%= task.name %>
+      </div>
       <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
       <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>
       <div class="small-1 medium-1 columns info">

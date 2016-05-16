@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
   before_action :set_contexts, only: [:new, :edit]
 
   # GET /tasks
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -60,6 +60,16 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /tasks/toggle/1
+  # GET /tasks/toggle/1.json
+  def toggle
+    @task.toggle! :complete
+    respond_to do |format|
+      format.html { redirect_to tasks_path, notice: 'Status updated.' }
+      format.js   { render :toggle }
     end
   end
 
