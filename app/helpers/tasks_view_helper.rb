@@ -11,5 +11,9 @@ module TasksViewHelper
       "future"
     end
   end
+
+  def task_complete_status(completed)
+    completed ? "complete" : "incomplete"
+  end
 end
 

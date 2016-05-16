@@ -46,3 +46,18 @@
   color: #cc9900;
 }
 
+.task.row.complete div {
+  font-style: oblique;
+  color: #aaa;
+}
+
+.task.row.complete .status:before {
+  content: url(/images/checked_checkbox.png);
+  vertical-align: middle;
+}
+
+.task.row.incomplete .status:before {
+  content: url(/images/unchecked_checkbox.png);
+  vertical-align: middle;
+}
+
