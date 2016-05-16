@@ -1,5 +1,8 @@
 
-<h4 class="task_name row"><%= task.name -%></h4>
+<div class="task_name row">
+  <%= link_to '<i class="fi-pencil"></i>'.html_safe, edit_task_path(task) %>
+  <%= task.name -%>
+</div>
   <div class="row">
     <div class="small-2 columns lbl">Context:</div>
     <div class="context_name small-4 columns"><%= task.context.name -%></div>

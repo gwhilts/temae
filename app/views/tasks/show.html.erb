@@ -1,20 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @task.start %>
-</p>
-
-<p>
-  <strong>Due:</strong>
-  <%= @task.due %>
-</p>
-
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<div id="taskDetail_<%= @task.id -%>" class="task_detail">
+  <%= render partial: 'task_detail', locals: { task: @task } %>
+</div>
