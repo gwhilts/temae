@@ -96,6 +96,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      (params.require(:task).permit(:name, :start, :due, :context_id, :complete)).merge({ user: current_user })
+      (params.require(:task).permit(:name, :start, :due, :context_id, :complete, :description)).merge({ user: current_user })
     end
 end

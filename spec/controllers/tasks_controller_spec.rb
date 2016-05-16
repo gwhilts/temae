@@ -72,9 +72,9 @@ RSpec.describe TasksController, type: :controller do
         expect(assigns(:task)).to be_persisted
       end
 
-      it "redirects to the created task" do
+      it "redirects to the task list" do
         post :create, {:task => valid_attributes}, valid_session
-        expect(response).to redirect_to(Task.last)
+        expect(response).to redirect_to(tasks_path)
       end
     end
 
