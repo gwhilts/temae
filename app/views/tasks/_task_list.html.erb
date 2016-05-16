@@ -8,10 +8,16 @@
       <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
       <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>
       <div class="small-1 medium-1 columns info">
-        <%= link_to '<i class="fi-eye"></i>'.html_safe, task %>
+        <a data-open="taskDetail_<%= task.id -%>"><i class="fi-eye"></i></a>
       </div>
       <div class="small-1 medium-1 columns edit">
         <%= link_to '<i class="fi-pencil"></i>'.html_safe, edit_task_path(task) %>
+      </div>
+      <div id="taskDetail_<%= task.id -%>" class="task_detail reveal" data-reveal>
+        <%= render partial: 'task_detail', locals: { task: task } %>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     </div>
   <% end -%>

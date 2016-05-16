@@ -1,0 +1,27 @@
+
+<h4 class="task_name row"><%= task.name -%></h4>
+  <div class="row">
+    <div class="small-2 columns lbl">Context:</div>
+    <div class="context_name small-4 columns"><%= task.context.name -%></div>
+    <div class="small-2 columns lbl">Start:</div>
+    <div class="start small-4 columns"><%= task.start.to_formatted_s(:short) -%></div>
+  </div>
+  <div class="row">
+    <div class="small-2 columns lbl">Project:</div>
+    <div class="project_name small-4 columns"><%= task.project_name -%></div>
+    <div class="small-2 columns lbl">Due:</div>
+    <div class="due small-4 columns due_<%= task_date_status(task.due) -%>">
+      <%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %>
+    </div>
+  </div>
+  <div class="description row columns">
+    San Francisco tiger-team savant A.I. garage carbon dome 
+    systema corrupted. footage cardboard sign face forwards 
+    soul-delay Tokyo receding shoes boy. savant engine boat 
+    network kanji computer San Francisco shanty town silent. 
+    Footage advert meta- corporation ablative 3D-printed geodesic 
+    otaku rain. motion BASE jump beef noodles long-chain hydrocarbons 
+    wet-ware alcohol Legba modem corporation. modem post-carbon 
+    alcohol network vehicle stimulate vinyl corrupted.
+  </div>
+  <div class="status row columns"><%= task.complete? ? 'Complete' : 'Open' -%></div>
