@@ -37,6 +37,10 @@
       </div>
     </div> 
   </div>
+  <div id="task-complete" class="field row">
+    <div class="small-2 columns">&nbsp;</div>
+    <div class="small-10 columns"><%= f.check_box :complete %> <%= f.label :complete, class: 'middle' %></div>
+  </div>
   <div class="row">
     <div class="actions small-3 small-centered columns text-right">
       <%= f.submit %>
