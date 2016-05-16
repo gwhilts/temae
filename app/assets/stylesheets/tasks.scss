@@ -2,6 +2,18 @@
 
 #task-form {
   margin: 2em;
+
+
+  label {
+    vertical-align: middle;
+    text-align: right;
+    font-style: oblique;
+    font-size:  100%;
+  }
+
+  label:after {
+    content: ':';
+  }
 }
 
 // List View

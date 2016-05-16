@@ -1,48 +1,50 @@
 <div id="task-form">
-<%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
+<%= form_for(task) do |f| %>
+  <% if task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
       <ul>
-      <% @task.errors.full_messages.each do |message| %>
+      <% task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div id="task-name" class="field row">
-    <div class="small-2 columns"><%= f.label :name, class: 'text-right middle' %></div>
-    <div class="small-10 columns"><%= f.text_field :name %></div>
+  <div class="task_name field row columns">
+    <%= f.text_field :name, placeholder: 'New Task' %>
   </div>
-  <div id="task-context" class="field row">
+  <div class="field row">
     <div class="small-2 columns"><%= f.label :context, class: 'text-right middle' %></div>
-    <div class="small-10 columns"><%= collection_select(:task, :context_id, @contexts, :id, :name) %></div>
-  </div>
-  <div id="task-project" class="field row">
-    <div class="small-2 columns"><%= f.label :project, class: 'text-right middle' %></div>
-    <div class="small-10 columns"><input type="text" value="miscellaneous" /></div>
-  </div>
-  <div class="row">
+    <div class="context_name small-4 columns"><%= collection_select(:task, :context_id, @contexts, :id, :name) %></div>
     <div id="dueDatePicker" class="date field datePicker" data-date-format="dd MM yyyy">
       <div class="small-2 columns prefix"><%= f.label :start, class: 'text-right middle' %></div>
       <div class="small-4 columns" style="float: left;">
         <%= f.text_field :start %>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="small-2 columns"><%= f.label :project, class: 'text-right middle'%></div>
+    <div class="project_name small-4 columns"><input type="text" value="Misc." /></div>
     <div id="dueDatePicker" class="date field datePicker" data-date-format="dd MM yyyy">
-      <div class="small-1 columns prefix"><%= f.label :due, class: 'text-right middle' %></div>
-      <div class="small-5 columns">
+      <div class="small-2 columns prefix"><%= f.label :due, class: 'text-right middle' %></div>
+      <div class="small-4 columns">
         <%= f.text_field :due %>
       </div>
     </div> 
   </div>
-  <div id="task-complete" class="field row">
-    <div class="small-2 columns">&nbsp;</div>
-    <div class="small-10 columns"><%= f.check_box :complete %> <%= f.label :complete, class: 'middle' %></div>
+  <div class="field row">
+    <div class="small-10 columns small-offset-2">
+      <%= f.text_area :description, rows: 5, placeholder: 'Description ...' %>
+    </div>
   </div>
+  <div id="task-complete" class="field row">
+    <div class="small-12 columns text-right"><%= f.check_box :complete %> Complete</div>
+  </div>
+
   <div class="row">
-    <div class="actions small-3 small-centered columns text-right">
+    <div class="actions small-12 columns text-right">
       <%= f.submit %>
     </div>
   </div>  
@@ -54,4 +56,5 @@ $(function(){
   $('.datePicker').fdatepicker();
 });
 </script>
+
 
