@@ -21,7 +21,7 @@ class Task < ActiveRecord::Base
   private
 
   def set_defaults
-    self.context ||= self.user.contexts.where(name: 'Inbox').first
-    self.start   ||= Time.now
+    self.context  ||= self.user.contexts.where(name: 'Inbox').first
+    self.start    ||= Time.now
   end
 end

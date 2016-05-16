@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do 
-  let(:task) { Task.new }
+# let(:task) { Task.new }
   let(:user) { create(:user) }
   let(:valid_attrs) {
     { name: 'fubar',
@@ -11,7 +11,7 @@ RSpec.describe Task, type: :model do
 
   context "validations" do
     before(:each) do
-      @t = task
+      @t = Task.new
       @t.valid?
     end
     it "validates presence of associated user"  do
@@ -24,7 +24,7 @@ RSpec.describe Task, type: :model do
 
   describe "#before_create" do
     before(:each) do
-      @t = task
+      @t = Task.new
       @t.update(valid_attrs)
     end
 
@@ -40,5 +40,4 @@ RSpec.describe Task, type: :model do
       end
     end
   end
-  
 end
