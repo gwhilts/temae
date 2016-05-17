@@ -3,21 +3,21 @@
   <%= link_to '<i class="fi-pencil"></i>'.html_safe, edit_task_path(task) %>
   <%= task.name -%>
 </div>
-  <div class="row">
-    <div class="small-2 columns lbl">Context:</div>
-    <div class="context_name small-4 columns"><%= task.context.name -%></div>
-    <div class="small-2 columns lbl">Start:</div>
-    <div class="start small-4 columns"><%= task.start.to_formatted_s(:short) -%></div>
+<div class="row">
+  <div class="small-2 columns lbl">Context:</div>
+  <div class="context_name small-4 columns"><%= task.context.name -%></div>
+  <div class="small-2 columns lbl">Start:</div>
+  <div class="start small-4 columns"><%= task.start.to_formatted_s(:short) -%></div>
+</div>
+<div class="row">
+  <div class="small-2 columns lbl">Project:</div>
+  <div class="project_name small-4 columns"><%= task.project_name -%></div>
+  <div class="small-2 columns lbl">Due:</div>
+  <div class="due small-4 columns due_<%= task_date_status(task.due) -%>">
+    <%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %>
   </div>
-  <div class="row">
-    <div class="small-2 columns lbl">Project:</div>
-    <div class="project_name small-4 columns"><%= task.project_name -%></div>
-    <div class="small-2 columns lbl">Due:</div>
-    <div class="due small-4 columns due_<%= task_date_status(task.due) -%>">
-      <%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %>
-    </div>
-  </div>
-  <div class="description row columns">
-    <%= task.description %>
-  </div>
-  <div class="status row columns"><%= task.complete? ? 'Complete' : 'Open' -%></div>
+</div>
+<div class="description row columns">
+  <%= task.description %>
+</div>
+<div class="status row columns"><%= task.complete? ? 'Complete' : 'Open' -%></div>

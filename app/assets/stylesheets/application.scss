@@ -90,11 +90,6 @@ $accordion-separator: #41444a;
   }
 }
 
-// padding for each list item
-//  .menu > li:not(.menu-text) > a {
-//  padding: 1.2rem 1rem;
-// }
-
 // logout button
 
 #logout-button {
@@ -103,9 +98,16 @@ $accordion-separator: #41444a;
 
 // title bar
 
+.title-bar-title {
+  color: #fff;
+}
+
 .title-bar {
-  a {
-    color: #fff;
+  li {
+    a {
+      color: #fff;
+      padding: 0.385rem 1rem;
+    }
   }
 
   a:hover {
@@ -113,3 +115,19 @@ $accordion-separator: #41444a;
   }
 }
 
+// Title Bar
+
+#filter_menu {
+  li {
+    background-color: #000;
+    text-align: left;
+  }
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+  display: none;
+}
+
+#logout-button {
+  margin-left: 2rem;
+}
