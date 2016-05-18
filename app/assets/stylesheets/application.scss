@@ -94,6 +94,7 @@ $accordion-separator: #41444a;
 
 #logout-button {
   margin: 0;
+  font-variant: small-caps;
 }
 
 // title bar
@@ -117,7 +118,10 @@ $accordion-separator: #41444a;
 
 // Title Bar
 
-#filter_menu {
+#filter_menu.menu.submenu.is-dropdown-submenu {
+  border: none; 
+  background-color: #000;
+  margin-left: 0.8rem;
   li {
     background-color: #000;
     text-align: left;
