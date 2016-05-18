@@ -64,12 +64,22 @@ class TasksController < ApplicationController
   end
 
   # GET /tasks/toggle/1
-  # GET /tasks/toggle/1.json
+  # GET /tasks/toggle/1.js
   def toggle
     @task.toggle! :complete
     respond_to do |format|
       format.html { redirect_to tasks_path, notice: 'Status updated.' }
       format.js   { render :toggle }
+    end
+  end
+
+  # DELETE /tasks/completed
+  # DELETE /tasks/completed.js
+  def cleanup
+    Task.destroy_all(user: current_user, complete: true)
+    respond_to do |format|
+      format.html { redirect_to '/', notice: "All completed task have been removed.\n Referred by: #{ request.referer }" }
+      format.js   { 'alert("Gone with the wind.")' }
     end
   end
 

@@ -21,8 +21,8 @@ Feature: View All Tasks
 
   Scenario: Viewing all tasks
     Given Fred has several tasks
-    When I visit the homepage
-    Then I should see a list of all my tasks
+    When Fred visits the homepage
+    Then Fred should see a list of all his tasks
     And they are grouped by context
 
 

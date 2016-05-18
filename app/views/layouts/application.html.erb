@@ -31,7 +31,13 @@
               <li>
                 <%= link_to('<i class="fi-plus"></i>'.html_safe, new_task_path, id: 'new_task_button', title: 'Create new task') %>
               </li>
-              <li><a href="#"><i class="fi-trash"></i></a></li>
+              <li>
+                <%= link_to('<i class="fi-trash"></i>'.html_safe, 
+                            cleanup_tasks_path,
+                            id: 'delete_all', title: "Clean up", 
+                            method: :delete,
+                            data: { confirm: "Delete all completed tasks?" } )  %>
+              </li>
               <li>
                 <%= link_to('log out', destroy_user_session_path, method: :delete, id: 'logout-button', class: 'tiny alert button') %>
               </li>

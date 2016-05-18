@@ -58,11 +58,11 @@ Given(/^Fred has several tasks$/) do
 
 end
 
-When(/^I visit the homepage$/) do
+When(/^Fred visits the homepage$/) do
   visit root_path
 end
 
-Then(/^I should see a list of all my tasks$/) do
+Then(/^Fred should see a list of all his tasks$/) do
   expect(page).to have_content('Wash Car')
   expect(page).to have_content('Replace Furnace Filter')
   expect(page).to have_selector('.task', count: 6)
@@ -72,7 +72,29 @@ Then(/^they are grouped by context$/) do
   expect(page).to have_selector('.context .task')
 end
 
-# Then(/^they sorted by due date, start date$/) do
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
+Given(/^some tasks are open/) do
+  user = User.find_by(email: 'fred@fred.net')
+  
+  ['Wash Car', 'Replace Furnace Filter'].each do |task_name|
+    t = user.tasks.where(name: task_name).first
+    t.complete = false
+  end
+end
 
+Given(/^some tasks are complete/) do
+  user = User.find_by(email: 'fred@fred.net')
+  
+  ['Return library book', 'Submit Pull Request'].each do |task_name|
+    t = user.tasks.where(name: task_name).first
+    t.complete = true
+  end
+end
+
+When(/^Fred clicks the delete button$/) do
+  click_on 'delete_all'
+end
+
+Then(/^Fred should see only incomplete tasks in the list of all tasks$/) do
+  expect(page).to have_selector('.task.incomplete')
+  expect(page).to_not have_selector('.task.complete')
+end
