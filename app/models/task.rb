@@ -11,13 +11,6 @@ class Task < ActiveRecord::Base
   before_create :set_defaults
 
 
-  # Public Methods
-  def project_name
-    # stubbing out with canned answer
-    # TODO: Replace with call to associated Project model (once it exists)
-    "miscellaneous"
-  end
-
   # Private Methods
   private
 
