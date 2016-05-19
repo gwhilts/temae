@@ -11,7 +11,7 @@
 </div>
 <div class="row">
   <div class="small-2 columns lbl">Project:</div>
-  <div class="project_name small-4 columns"><%= task.project_name -%></div>
+  <div class="project.name small-4 columns"><%= task.project.name -%></div>
   <div class="small-2 columns lbl">Due:</div>
   <div class="due small-4 columns due_<%= task_date_status(task.due) -%>">
     <%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %>
