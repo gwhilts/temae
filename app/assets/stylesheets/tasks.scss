@@ -1,7 +1,7 @@
 // Form
 
 #task-form {
-  margin: 2em;
+  margin: 2rem;
 
 
   label {
@@ -19,12 +19,12 @@
 // List View
 
 .task-group {
-  margin: 0 0 1.5em 0;
+  margin: 0 0 1.5rem 0;
 }
 
 .task-group.empty {
   font-style: oblique;
-  text-indent: 2em;
+  text-indent: 2rem;
 }
 
 .task-group-name {
@@ -33,7 +33,7 @@
 }
 
 .task-group .task {
-  padding: .8em 1em 0;
+  padding: .8rem 1rem 0;
 }
 
 .task-group .task:nth-child(odd) {
@@ -82,7 +82,7 @@
   }
 
   .task_name {
-    font-size: 1em;
+    font-size: 1rem;
   }
 
   .task_name,
@@ -95,7 +95,7 @@
   }
 
   .description {
-    padding: 1em;
+    padding: 1rem;
     font-style: oblique;
   }
 }
