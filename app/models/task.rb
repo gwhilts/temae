@@ -2,6 +2,7 @@ class Task < ActiveRecord::Base
   # Related Models
   belongs_to :context
   belongs_to :user
+  belongs_to :project
 
   # Validations
   validates :name, :user, presence: true

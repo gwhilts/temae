@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Relations
   has_many :tasks, dependent: :destroy
   has_many :contexts, dependent: :destroy
+  has_many :projects, dependent: :destroy
 
   # Callbacks
   after_create :create_default_contexts
