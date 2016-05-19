@@ -5,7 +5,7 @@
         <%= link_to " ", task_toggle_path(id: task.id), remote: true, method: :get, class: 'status' -%>
         <%= task.name %>
       </div>
-      <div class="hide-for-small-only medium-2 columns project"><%= task.project_name %></div>
+      <div class="hide-for-small-only medium-2 columns project"><%= task.project.name %></div>
       <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>
       <div class="small-1 medium-1 columns info">
         <a data-open="taskDetail_<%= task.id -%>"><i class="fi-eye"></i></a>
