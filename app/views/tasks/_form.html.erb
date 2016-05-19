@@ -26,7 +26,7 @@
   </div>
   <div class="row">
     <div class="small-2 columns"><%= f.label :project, class: 'text-right middle'%></div>
-    <div class="project_name small-4 columns"><input type="text" value="Misc." /></div>
+    <div class="project_name small-4 columns"><%= collection_select(:task, :project_id, @projects, :id, :name) %></div>
     <div id="dueDatePicker" class="date field datePicker" data-date-format="dd MM yyyy">
       <div class="small-2 columns prefix"><%= f.label :due, class: 'text-right middle' %></div>
       <div class="small-4 columns">
