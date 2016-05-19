@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     [
       { name: 'Inbox',   user: self, icon: 'inbox' },
       { name: 'Email',   user: self, icon: 'email' },
-      { name: 'Errands', user: self, icon: 'errand' },
+      { name: 'Errands', user: self, icon: 'errands' },
       { name: 'Home',    user: self, icon: 'home' },
       { name: 'Phone',   user: self, icon: 'phone' },
       { name: 'Office',  user: self, icon: 'office' },

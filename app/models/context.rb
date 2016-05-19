@@ -6,7 +6,7 @@ class Context < ActiveRecord::Base
     'home'     => 'fi-home',
     'office'   => 'fi-torso-business',
     'phone'    => 'fi-telephone',
-    'errand'   => 'fi-marker',
+    'errands'   => 'fi-marker',
     'email'    => 'fi-mail',
     'shopping' => 'fi-shopping-cart',
     'generic'  => 'fi-list-thumbnails'
