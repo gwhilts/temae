@@ -26,7 +26,12 @@ RSpec.describe User, type: :model do
       expect(Context.where(user_id: u.id).count).to eq(0)
     end
     
-    # it "also destroys the user's projects"
-    
+    it "also destroys the user's projects" do
+      u = user
+      Project.new(name: 'baz', user: u).save!
+      expect(Project.where(user_id: u.id).count).to be > (0)
+      u.destroy!
+      expect(Project.where(user_id: u.id).count).to eq(0)
+    end 
   end
 end
