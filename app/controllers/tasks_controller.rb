@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
   before_action :set_contexts, only: [:new, :edit]
+  before_action :set_projects
 
   # GET /tasks
   # GET /tasks.json
@@ -78,8 +79,8 @@ class TasksController < ApplicationController
   def cleanup
     Task.destroy_all(user: current_user, complete: true)
     respond_to do |format|
-      format.html { redirect_to '/', notice: "All completed task have been removed.\n Referred by: #{ request.referer }" }
-      format.js   { 'alert("Gone with the wind.")' }
+      format.html { redirect_to request.referer, notice: "All completed task have been removed." }
+      format.js   { 'alert("All completed task have been removed.")' }
     end
   end
 
@@ -102,6 +103,14 @@ class TasksController < ApplicationController
       inbox  = Context.where(user: current_user, name: 'Inbox').includes(:tasks).first
       others = Context.where(user: current_user).where.not(name: 'Inbox').order(:name).includes(:tasks)
       @contexts = others.unshift inbox
+    end
+
+    # Loads set of Projects belonging to the current user.
+    # The first project is the "misc" catch-all, others follow alphabetically.
+    def set_projects
+      misc   = Project.find_or_create_by(user: current_user, name: 'misc')
+      others = Project.where(user: current_user).where.not(name: 'misc').order(:name)
+      @projects = others.unshift misc
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
