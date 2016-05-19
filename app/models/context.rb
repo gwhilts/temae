@@ -28,14 +28,6 @@ class Context < ActiveRecord::Base
   after_initialize :set_defaults 
   before_destroy :check_for_tasks
   
-  # Class Methods
-  def self.menu_for(user_id)
-    inbox    = Context.where(user_id: user_id, name: "Inbox").pluck(:id, :name).to_h
-    others   = Context.where(user_id: user_id).where.not(name: 'Inbox').order(:name)
-    menu     = (others.collect { |c| {c.id => c.name} }).inject { | m = {}, c | m.merge c }
-    inbox.merge menu
-  end
-
   # Private Methods
   private
 
