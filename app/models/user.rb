@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   # Callbacks
   after_create :create_default_contexts
+  after_create :create_default_projects
 
   private
 
@@ -24,6 +25,14 @@ class User < ActiveRecord::Base
       { name: 'Office',  user: self, icon: 'office' },
     ].each do |context|
       Context.create! context
+    end
+  end
+
+  def create_default_projects
+    [
+      { name: 'misc', user: self, sequential: false }
+    ].each do |project|
+      Project.create! project
     end
   end
 

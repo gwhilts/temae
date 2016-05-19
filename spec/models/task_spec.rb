@@ -39,5 +39,11 @@ RSpec.describe Task, type: :model do
         expect(@t.start.to_s).to eq(Time.now.strftime("%F"))
       end
     end
+
+    context 'with no project specified' do
+      it "assigns the task to the user's 'misc' project" do
+        expect(@t.project.name).to eq('misc')
+      end
+    end
   end
 end
