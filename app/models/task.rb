@@ -10,6 +10,15 @@ class Task < ActiveRecord::Base
   # Callbacks
   before_create :set_defaults
 
+  # Public Methods
+  def available
+    if self.start < (Time.now + 1.days)
+      'available'
+    else
+      'unavailable'
+    end
+  end
+
 
   # Private Methods
   private
