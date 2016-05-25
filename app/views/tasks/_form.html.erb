@@ -34,6 +34,14 @@
       </div>
     </div> 
   </div>
+  <div class="row">
+    <div class="small-2 columns">
+      <%= f.label :url, 'URL', class: 'text-right middle' %>
+    </div>
+    <div class="small-10 columns">
+      <%= f.text_field :url %>
+    </div>
+  </div>
   <div class="field row">
     <div class="small-10 columns small-offset-2">
       <%= f.text_area :description, rows: 5, placeholder: 'Description ...' %>

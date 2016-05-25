@@ -121,6 +121,7 @@ class TasksController < ApplicationController
                                     :project_id,
                                     :context_id,
                                     :complete,
+                                    :url,
                                     :description)).merge({ user: current_user })
     end
 end

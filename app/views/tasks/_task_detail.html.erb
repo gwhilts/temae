@@ -17,6 +17,14 @@
     <%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %>
   </div>
 </div>
+<% if task.url -%>
+<div class="row">
+  <div class="small-2 columns lbl">URL:</div>
+  <div class="small-10 columns">
+    <a href="<%= task.url %>"><%= task.url %></a>
+  </div>
+</div>
+<% end -%>
 <div class="description row columns">
   <%= task.description %>
 </div>
