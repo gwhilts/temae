@@ -1,6 +1,9 @@
 <div class="task-group">
   <% tasks.each_with_index do |task, index| -%>
-    <div id="<%= task.id -%>" class="task row collapse due_<%= task_date_status(task.due) -%> <%= task_complete_status(task.complete?) -%>">
+    <div id="<%= task.id -%>" class="task row collapse
+                                due_<%= task_date_status(task.due) -%> 
+                                <%= task_complete_status(task.complete?) -%>
+                                <%= task.available -%>">
       <div class="small-10 medium-6 columns name">
         <div class="row collapse">
           <div class="small-1 columns">
