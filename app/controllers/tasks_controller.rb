@@ -75,6 +75,21 @@ class TasksController < ApplicationController
     end
   end
 
+  # GET /tasks/by_context/all
+  # GET /tasks/by_context/1
+  def by_context
+    case contx_id = params[:id]
+    when 'all'
+      set_contexts_with_tasks
+    else
+      @contexts = Context.where(user: current_user, id: contx_id)
+    end
+
+    respond_to do |format|
+      format.html { render :index }
+    end
+  end
+
   # GET /tasks/toggle/1
   # GET /tasks/toggle/1.js
   def toggle
