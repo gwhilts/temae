@@ -1,6 +1,6 @@
 var filterTasks = function() {
   $('.task.unavailable').hide();
-  $('.context').each( function() {
+  $('.task-group').each( function() {
     if( $(this).find('.available').size() == 0 ) {
       $(this).hide();
     }
@@ -8,6 +8,6 @@ var filterTasks = function() {
 }
 
 var showAllTasks = function() {
-  $('.context').show();
+  $('.task-group').show();
   $('.task').show();
 }
