@@ -1,4 +1,4 @@
-<div class="task-group">
+<div>
   <% tasks.each_with_index do |task, index| -%>
     <div id="<%= task.id -%>" class="task row collapse
                                 due_<%= task_date_status(task.due) -%> 
@@ -14,7 +14,11 @@
           </div>
         </div>
       </div>
-      <div class="hide-for-small-only medium-2 columns project"><%= task.project.name %></div>
+      <% if @projects -%>
+        <div class="hide-for-small-only medium-2 columns context"><%= task.context.name %></div>
+      <% else -%>
+        <div class="hide-for-small-only medium-2 columns project"><%= task.project.name %></div>
+      <% end %>
       <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>
       <div class="small-1 medium-1 columns info">
         <a data-open="taskDetail_<%= task.id -%>"><i class="fi-eye"></i></a>

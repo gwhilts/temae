@@ -64,6 +64,17 @@ class TasksController < ApplicationController
     end
   end
 
+  # GET /tasks/by_project/1
+  # GET /tasks/by_project/all
+  def by_project
+    case proj_id = params[:id]
+    when 'all'
+      @projects = Project.where(user: current_user).includes(:tasks)
+    else
+      @projects = Project.where(user: current_user, id: proj_id).includes(:tasks)
+    end
+  end
+
   # GET /tasks/toggle/1
   # GET /tasks/toggle/1.js
   def toggle

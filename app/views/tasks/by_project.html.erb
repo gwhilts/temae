@@ -1,0 +1,16 @@
+<div class="row">
+  <div id="page-title" class="small-4 small-centered medium-uncentered">Projects</div>
+</div>
+
+<% @projects.each do |project| -%>
+    <div class="project row task-group">
+      <h5 class="task-group-name"><%= project.name %></h5>
+      <% if project.tasks.empty? -%>
+        <div class="small-12 columns"><em>No tasks</em></div>
+      <% else -%>
+        <%= render partial: 'task_list', locals: { tasks: project.tasks } %>
+      <% end =%>
+    </div>
+<% end =%>
+
+<br />

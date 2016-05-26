@@ -19,14 +19,8 @@
 // List View
 
 .task-group {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1em 0;
 }
-
-.task-group.empty {
-  font-style: oblique;
-  text-indent: 2rem;
-}
-
 .task-group-name {
   font-weight: bold;
   border-bottom: thick solid #666;

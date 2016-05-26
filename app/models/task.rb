@@ -12,7 +12,7 @@ class Task < ActiveRecord::Base
 
   # Public Methods
   def available
-    if self.start < (Time.now + 1.days)
+    if self.start < (Time.now + 12.hours)
       'available'
     else
       'unavailable'

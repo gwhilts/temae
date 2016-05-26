@@ -4,7 +4,7 @@
 
 <% @contexts.each do |context| -%>
   <% unless context.tasks.empty? -%>
-    <div class="context row">
+    <div class="context task-group row">
       <h5 class="task-group-name"><%= context.name %></h5>
       <%= render partial: 'task_list', locals: { tasks: context.tasks } %>
     </div>
