@@ -1,0 +1,30 @@
+<ul class="vertical accordion-menu menu" data-accordion-menu>
+  <li id="inbox-menu-item">
+    <a href="#inbox"><i class="fi-download"></i> Inbox</a>
+  </li>
+  <li>
+    <a href="#context">Context</i></a>
+    <ul class="menu vertical sublevel-1">
+      <li><a class="subitem" href="#"> All</a></li>
+      <li><a class="subitem" href="#"><i class="fi-mail context-icon"></i> Email</a></li>
+      <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Errands</a></li>
+      <ul class="menu vertical sublevel-2">
+        <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Freddie's</a></li>
+        <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Library</a></li>
+      </ul>
+      <li><a class="subitem" href="#"><i class="fi-social-github context-icon"></i> Github</a></li>
+      <li><a class="subitem" href="#"><i class="fi-home context-icon"></i> Home</a></li>
+      <li><a class="subitem" href="#"><i class="fi-torso-business context-icon"></i> Office</a></li>
+      <li><a class="subitem" href="#"><i class="fi-telephone context-icon"></i> Phone</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#projects">Projects</a>
+    <ul class="menu vertical sublevel-1">
+      <li><%= link_to 'All', tasks_by_project_path(id: 'all'), class: 'subitem' %></li>
+      <% projects.each do |proj| %>
+        <li><%= link_to proj.name, tasks_by_project_path(id: proj.id), class: 'subitem' %></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>

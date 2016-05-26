@@ -12,3 +12,7 @@
 <% end =%>
 
 <br />
+
+<% content_for :side_menu do %>
+  <%= render partial: 'side_menu', locals: { projects: @projects } %>
+<% end %>

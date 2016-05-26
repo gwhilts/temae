@@ -1,3 +1,7 @@
 <%= render partial: 'form', locals: {task: @task} %>
 
 <%= link_to '<i class="fi-list-thumbnails"></i>'.html_safe, tasks_path %>
+
+<% content_for :side_menu do %>
+  <%= render partial: 'side_menu', locals: { projects: @projects } %>
+<% end %>

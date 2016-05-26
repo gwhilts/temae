@@ -3,3 +3,7 @@
 <div id="taskDetail_<%= @task.id -%>" class="task_detail">
   <%= render partial: 'task_detail', locals: { task: @task } %>
 </div>
+
+<% content_for :side_menu do %>
+  <%= render partial: 'side_menu', locals: { projects: @projects } %>
+<% end %>

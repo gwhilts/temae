@@ -69,9 +69,9 @@ class TasksController < ApplicationController
   def by_project
     case proj_id = params[:id]
     when 'all'
-      @projects = Project.where(user: current_user).includes(:tasks)
+      @tasks_by_project  = Project.where(user: current_user).includes(:tasks)
     else
-      @projects = Project.where(user: current_user, id: proj_id).includes(:tasks)
+      @tasks_by_project = Project.where(user: current_user, id: proj_id).includes(:tasks)
     end
   end
 

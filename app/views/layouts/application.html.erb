@@ -47,39 +47,7 @@
 
         <!-- off-canvas left menu -->
         <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
-              <ul class="vertical accordion-menu menu" data-accordion-menu>
-                <li id="inbox-menu-item">
-                  <a href="#inbox"><i class="fi-download"></i> Inbox</a>
-                </li>
-                <li>
-                  <a href="#context">Context</i></a>
-                  <ul class="menu vertical sublevel-1">
-                    <li><a class="subitem" href="#"> All</a></li>
-                    <li><a class="subitem" href="#"><i class="fi-mail context-icon"></i> Email</a></li>
-                    <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Errands</a></li>
-                    <ul class="menu vertical sublevel-2">
-                      <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Freddie's</a></li>
-                      <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Library</a></li>
-                    </ul>
-                    <li><a class="subitem" href="#"><i class="fi-social-github context-icon"></i> Github</a></li>
-                    <li><a class="subitem" href="#"><i class="fi-home context-icon"></i> Home</a></li>
-                    <li><a class="subitem" href="#"><i class="fi-torso-business context-icon"></i> Office</a></li>
-                    <li><a class="subitem" href="#"><i class="fi-telephone context-icon"></i> Phone</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#projects">Projects</a>
-                  <ul class="menu vertical sublevel-1">
-                    <li><a class="subitem" href="#">All</a></li>
-                    <li><a class="subitem" href="#">Bills</a></li>
-                    <li><a class="subitem" href="#">Blog</a></li>
-                    <li><a class="subitem" href="#">Hana</a></li>
-                    <li><a class="subitem" href="#">Remodel</a></li>
-                    <li><a class="subitem" href="#">Shine</a></li>
-                    <li><a class="subitem" href="#">Temae</a></li>
-                  </ul>
-                </li>
-              </ul>
+          <%= yield :side_menu %>
         </div>
 
         <!-- original content goes in this container -->

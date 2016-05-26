@@ -2,7 +2,7 @@
   <div id="page-title" class="small-4 small-centered medium-uncentered">Projects</div>
 </div>
 
-<% @projects.each do |project| -%>
+<% @tasks_by_project.each do |project| -%>
     <div class="project row task-group">
       <h5 class="task-group-name"><%= project.name %></h5>
       <% if project.tasks.empty? -%>
@@ -14,3 +14,7 @@
 <% end =%>
 
 <br />
+
+<% content_for :side_menu do %>
+  <%= render partial: 'side_menu', locals: { projects: @projects } %>
+<% end %>
