@@ -82,7 +82,7 @@ class TasksController < ApplicationController
     when 'all'
       set_contexts_with_tasks
     else
-      @contexts = Context.where(user: current_user, id: contx_id)
+      @contexts = Context.where(user: current_user, id: contx_id).includes(:tasks)
     end
 
     respond_to do |format|
