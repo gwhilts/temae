@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
   before_action :set_contexts, except: [:index, :destroy]
-  before_action :set_projects, except: [:destroy] 
+  before_action :set_projects, except: [:destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
+    @task_grouping = 'context'
     set_contexts_with_tasks
   end
 
@@ -67,6 +68,7 @@ class TasksController < ApplicationController
   # GET /tasks/by_project/1
   # GET /tasks/by_project/all
   def by_project
+    @task_grouping = 'project'
     case proj_id = params[:id]
     when 'all'
       @tasks_by_project  = Project.where(user: current_user).includes(:tasks)
@@ -79,6 +81,7 @@ class TasksController < ApplicationController
   # GET /tasks/by_context/1
   # GET /tasks/by_context/Name
   def by_context
+    @task_grouping = 'context'
     case ctx = params[:id]
     when 'all'
       set_contexts_with_tasks

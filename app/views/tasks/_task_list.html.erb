@@ -14,8 +14,8 @@
           </div>
         </div>
       </div>
-      <% if @projects -%>
-        <div class="hide-for-small-only medium-2 columns context"><%= task.context.name %></div>
+      <% if @task_grouping == "project" -%>
+        <div class="hide-for-small-only medium-2 columns context">@<%= task.context.name %></div>
       <% else -%>
         <div class="hide-for-small-only medium-2 columns project"><%= task.project.name %></div>
       <% end %>
