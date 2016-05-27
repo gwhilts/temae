@@ -81,13 +81,58 @@ $accordion-separator: #41444a;
       // sets accodion arrow color and direction
       border-color: #fff transparent transparent;
     }
-    i.context-icon { 
-      vertical-align: top;
-      display: inline;
-      margin: 0 .25rem 0 -1rem;
-    }
+//  i.context-icon { 
+//    vertical-align: top;
+//    display: inline;
+//    margin: 0 .25rem 0 -1rem;
+//  }
 
   }
+}
+
+[data-icon='inbox']:before {
+  font-family: "foundation-icons";
+  content: '\f143  ';
+}
+
+[data-icon='errands']:before {
+  font-family: "foundation-icons";
+  content: '\f172  ';
+}
+
+[data-icon='home']:before {
+  font-family: "foundation-icons";
+  content: '\f15a  ';
+}
+
+[data-icon='github']:before {
+  font-family: "foundation-icons";
+  content: '\f1c9  ';
+}
+
+[data-icon='office']:before {
+  font-family: "foundation-icons";
+  content: '\f1fc  ';
+}
+
+[data-icon='email']:before {
+  font-family: "foundation-icons";
+  content: '\f16d  ';
+}
+
+[data-icon='shopping']:before {
+  font-family: "foundation-icons";
+  content: '\f1b1  ';
+}
+
+[data-icon='generic']:before {
+  font-family: "foundation-icons";
+  content: '\f168  ';
+}
+
+[data-icon='phone']:before {
+  font-family: "foundation-icons";
+  content: '\f1f8  ';
 }
 
 // logout button
