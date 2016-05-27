@@ -67,13 +67,16 @@ class TasksController < ApplicationController
 
   # GET /tasks/by_project/1
   # GET /tasks/by_project/all
+  # GET /tasks/by_project/Name
   def by_project
     @task_grouping = 'project'
-    case proj_id = params[:id]
-    when 'all'
-      @tasks_by_project  = Project.where(user: current_user).includes(:tasks)
+    case proj = params[:id]
+    when /all/i
+      @tasks_by_project = Project.where(user: current_user).includes(:tasks)
+    when /^\d{1,}$/
+      @tasks_by_project = Project.where(user: current_user, id: proj).includes(:tasks)
     else
-      @tasks_by_project = Project.where(user: current_user, id: proj_id).includes(:tasks)
+      @tasks_by_project = Project.where(user: current_user, name: proj).includes(:tasks)
     end
   end
 
@@ -83,7 +86,7 @@ class TasksController < ApplicationController
   def by_context
     @task_grouping = 'context'
     case ctx = params[:id]
-    when 'all'
+    when /all/i
       set_contexts_with_tasks
     when /^\d{1,}$/
       set_contexts
