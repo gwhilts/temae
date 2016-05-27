@@ -2,7 +2,7 @@
   <div id="page-title" class="small-4 small-centered medium-uncentered">Context</div>
 </div>
 
-<% @contexts.each do |context| -%>
+<% @tasks_by_context.each do |context| -%>
   <% unless context.tasks.empty? -%>
     <div class="context task-group row">
       <h5 class="task-group-name"><%= context.name %></h5>

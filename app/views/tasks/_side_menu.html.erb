@@ -1,22 +1,11 @@
 <ul class="vertical accordion-menu menu" data-accordion-menu>
   <li id="inbox-menu-item">
     <a href="#inbox"><i class="fi-download"></i> Inbox</a>
+    <%= link_to 'Inbox', tasks_by_context_path(id: 'Inbox'), data: { icon: 'inbox' } %>
   </li>
   <li>
-    <a href="#context">Context</i></a>
-    <ul class="menu vertical sublevel-1">
-      <li><a class="subitem" href="#"> All</a></li>
-      <li><a class="subitem" href="#"><i class="fi-mail context-icon"></i> Email</a></li>
-      <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Errands</a></li>
-      <ul class="menu vertical sublevel-2">
-        <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Freddie's</a></li>
-        <li><a class="subitem" href="#"><i class="fi-marker context-icon"></i> Library</a></li>
-      </ul>
-      <li><a class="subitem" href="#"><i class="fi-social-github context-icon"></i> Github</a></li>
-      <li><a class="subitem" href="#"><i class="fi-home context-icon"></i> Home</a></li>
-      <li><a class="subitem" href="#"><i class="fi-torso-business context-icon"></i> Office</a></li>
-      <li><a class="subitem" href="#"><i class="fi-telephone context-icon"></i> Phone</a></li>
-    </ul>
+    <a href="#context">Context</a>
+    <%= (nested_context_menu @contexts).html_safe %>
   </li>
   <li>
     <a href="#projects">Projects</a>

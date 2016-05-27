@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
-  before_action :set_contexts, only: [:new, :edit]
-  before_action :set_projects
+  before_action :set_contexts, except: [:index, :destroy]
+  before_action :set_projects, except: [:destroy] 
 
   # GET /tasks
   # GET /tasks.json
@@ -77,12 +77,17 @@ class TasksController < ApplicationController
 
   # GET /tasks/by_context/all
   # GET /tasks/by_context/1
+  # GET /tasks/by_context/Name
   def by_context
-    case contx_id = params[:id]
+    case ctx = params[:id]
     when 'all'
       set_contexts_with_tasks
+    when /^\d{1,}$/
+      set_contexts
+      @tasks_by_context = Context.where(user: current_user, id: ctx).includes(:tasks)
     else
-      @contexts = Context.where(user: current_user, id: contx_id).includes(:tasks)
+      set_contexts
+      @tasks_by_context = Context.where(user: current_user, name: ctx).includes(:tasks)
     end
 
     respond_to do |format|
@@ -121,14 +126,14 @@ class TasksController < ApplicationController
     def set_contexts
       inbox  = Context.where(user: current_user, name: 'Inbox').first
       others = Context.where(user: current_user).where.not(name: 'Inbox').order(:name)
-      @contexts = others.unshift inbox
+      @tasks_by_context = @contexts = others.unshift inbox
     end
 
     # Same as #set_contexts, with eagerly loaded Tasks to avoid N+1 issues
     def set_contexts_with_tasks
       inbox  = Context.where(user: current_user, name: 'Inbox').includes(:tasks).first
       others = Context.where(user: current_user).where.not(name: 'Inbox').order(:name).includes(:tasks)
-      @contexts = others.unshift inbox
+      @tasks_by_context = @contexts = others.unshift inbox
     end
 
     # Loads set of Projects belonging to the current user.
