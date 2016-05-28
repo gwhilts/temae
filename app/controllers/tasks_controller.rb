@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @task_grouping = 'context'
-    set_contexts_with_tasks
+    @task_groups   = set_contexts_with_tasks
   end
 
   # GET /tasks/1
@@ -72,12 +72,14 @@ class TasksController < ApplicationController
     @task_grouping = 'project'
     case proj = params[:id]
     when /all/i
-      @tasks_by_project = Project.where(user: current_user).includes(:tasks)
+      @task_groups = Project.where(user: current_user).includes(:tasks)
     when /^\d{1,}$/
-      @tasks_by_project = Project.where(user: current_user, id: proj).includes(:tasks)
+      @task_groups = Project.where(user: current_user, id: proj).includes(:tasks)
     else
-      @tasks_by_project = Project.where(user: current_user, name: proj).includes(:tasks)
+      @task_groups = Project.where(user: current_user, name: proj).includes(:tasks)
     end
+
+    render :index
   end
 
   # GET /tasks/by_context/all
@@ -87,13 +89,11 @@ class TasksController < ApplicationController
     @task_grouping = 'context'
     case ctx = params[:id]
     when /all/i
-      set_contexts_with_tasks
+      @task_groups = set_contexts_with_tasks
     when /^\d{1,}$/
-      set_contexts
-      @tasks_by_context = Context.where(user: current_user, id: ctx).includes(:tasks)
+      @task_groups = Context.where(user: current_user, id: ctx).includes(:tasks)
     else
-      set_contexts
-      @tasks_by_context = Context.where(user: current_user, name: ctx).includes(:tasks)
+      @task_groups = Context.where(user: current_user, name: ctx).includes(:tasks)
     end
 
     respond_to do |format|
@@ -132,14 +132,14 @@ class TasksController < ApplicationController
     def set_contexts
       inbox  = Context.where(user: current_user, name: 'Inbox').first
       others = Context.where(user: current_user).where.not(name: 'Inbox').order(:name)
-      @tasks_by_context = @contexts = others.unshift inbox
+      @contexts = others.unshift inbox
     end
 
     # Same as #set_contexts, with eagerly loaded Tasks to avoid N+1 issues
     def set_contexts_with_tasks
       inbox  = Context.where(user: current_user, name: 'Inbox').includes(:tasks).first
       others = Context.where(user: current_user).where.not(name: 'Inbox').order(:name).includes(:tasks)
-      @tasks_by_context = @contexts = others.unshift inbox
+      @contexts = others.unshift inbox
     end
 
     # Loads set of Projects belonging to the current user.
