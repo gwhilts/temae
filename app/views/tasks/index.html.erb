@@ -1,15 +1,15 @@
 <div class="row">
-  <div id="page-title" class="small-4 small-centered medium-uncentered">Context</div>
+  <div id="page-title" class="small-4 small-centered medium-uncentered"><%= @task_grouping.titleize %></div>
 </div>
 
-<% @tasks_by_context.each do |context| -%>
-  <% unless context.tasks.empty? -%>
-    <div class="context task-group row">
-      <h5 class="task-group-name"><%= context.name %></h5>
-      <%= render partial: 'task_list', locals: { tasks: context.tasks } %>
+<% @task_groups.each do |group| -%>
+  <% unless group.tasks.empty? -%>
+    <div class="<%= @task_grouping %> task-group row">
+      <h5 class="task-group-name"><%= group.name %></h5>
+      <%= render partial: 'task_list', locals: { tasks: group.tasks } %>
     </div>
-  <% end =%>
-<% end =%>
+  <% end %>
+<% end %>
 
 <br />
 
