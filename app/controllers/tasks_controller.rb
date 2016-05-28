@@ -71,10 +71,12 @@ class TasksController < ApplicationController
     @task_grouping = 'project'
     case proj_id = params[:id]
     when 'all'
-      @tasks_by_project  = Project.where(user: current_user).includes(:tasks)
+      @task_groups = Project.where(user: current_user).includes(:tasks)
     else
-      @tasks_by_project = Project.where(user: current_user, id: proj_id).includes(:tasks)
+      @task_groups = Project.where(user: current_user, id: proj_id).includes(:tasks)
     end
+
+    render :index
   end
 
   # GET /tasks/by_context/all
