@@ -3,15 +3,17 @@
 </div>
 
 <% @task_groups.each do |group| -%>
-  <% unless group.tasks.empty? -%>
+  <% unless group.tasks.empty? && @task_groups.count > 1 -%>
     <div class="<%= @task_grouping %> task-group row">
       <h5 class="task-group-name"><%= group.name %></h5>
-      <%= render partial: 'task_list', locals: { tasks: group.tasks } %>
+      <% if group.tasks.empty? %>
+        <em class="small-12 columns">No tasks</em>
+      <% else %>
+        <%= render partial: 'task_list', locals: { tasks: group.tasks } %>
+      <% end %>
     </div>
   <% end %>
 <% end %>
-
-<br />
 
 <% content_for :side_menu do %>
   <%= render partial: 'side_menu', locals: { projects: @projects } %>

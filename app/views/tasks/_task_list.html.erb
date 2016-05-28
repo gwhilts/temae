@@ -1,5 +1,5 @@
 <div>
-  <% tasks.each_with_index do |task, index| -%>
+  <% tasks.each do |task| -%>
     <div id="<%= task.id -%>" class="task row collapse
                                 due_<%= task_date_status(task.due) -%> 
                                 <%= task_complete_status(task.complete?) -%>
