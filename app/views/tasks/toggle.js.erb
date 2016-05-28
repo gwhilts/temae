@@ -1,1 +1,2 @@
 $('#<%= @task.id -%>').toggleClass('complete incomplete');
+$('#taskDetail_<%= @task.id -%> .status').text("<%= @task.complete? ? 'Complete' : 'Open' -%>");
