@@ -79,7 +79,9 @@ class TasksController < ApplicationController
       @task_groups = Project.where(user: current_user, name: proj).includes(:tasks)
     end
 
-    render :index
+    respond_to do |format|
+      format.html { render :index }
+    end
   end
 
   # GET /tasks/by_context/all
@@ -91,9 +93,11 @@ class TasksController < ApplicationController
     when /all/i
       @task_groups = set_contexts_with_tasks
     when /^\d{1,}$/
-      @task_groups = Context.where(user: current_user, id: ctx).includes(:tasks)
+      context = Context.where(user: current_user, id: ctx).includes(:tasks).first
+      @task_groups = context.children.order(:name).includes(:tasks).unshift context
     else
-      @task_groups = Context.where(user: current_user, name: ctx).includes(:tasks)
+      context = Context.where(user: current_user, name: ctx).includes(:tasks).first
+      @task_groups = context.children.order(:name).includes(:tasks).unshift context
     end
 
     respond_to do |format|
