@@ -4,7 +4,7 @@
                                 due_<%= task_date_status(task.due) -%> 
                                 <%= task_complete_status(task.complete?) -%>
                                 <%= task.available -%>">
-      <div class="small-10 medium-6 columns name">
+      <div class="small-10 medium-6 large-4 columns name">
         <div class="row collapse">
           <div class="small-1 columns">
             <%= link_to " ", task_toggle_path(id: task.id), remote: true, method: :get, class: 'status' -%>   
@@ -19,11 +19,12 @@
       <% else -%>
         <div class="hide-for-small-only medium-2 columns project"><%= task.project.name %></div>
       <% end %>
-      <div class="hide-for-small-only medium-2 columns due"><%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %></div>
-      <div class="small-1 medium-1 columns info">
+      <div class="show-for-large large-2 columns due">start: <%= task.start.to_formatted_s(:short) %></div>
+      <div class="show-for-medium medium-2 columns due"><%= task.due ? "due: #{ task.due.to_formatted_s(:short) }" : "&nbsp;".html_safe %></div>
+      <div class="small-1 columns info">
         <a data-open="taskDetail_<%= task.id -%>"><i class="fi-eye"></i></a>
       </div>
-      <div class="small-1 medium-1 columns edit">
+      <div class="small-1 columns edit">
         <%= link_to '<i class="fi-pencil"></i>'.html_safe, edit_task_path(task) %>
       </div>
       <div id="taskDetail_<%= task.id -%>" class="task_detail reveal" data-reveal>
