@@ -22,10 +22,10 @@
       <div class="show-for-large large-2 columns due">start: <%= task.start.to_formatted_s(:short) %></div>
       <div class="show-for-medium medium-2 columns due"><%= task.due ? "due: #{ task.due.to_formatted_s(:short) }" : "&nbsp;".html_safe %></div>
       <div class="small-1 columns info">
-        <a data-open="taskDetail_<%= task.id -%>"><i class="fi-eye"></i></a>
+        <a data-open="taskDetail_<%= task.id -%>" title="View task details"><i class="fi-eye"></i></a>
       </div>
       <div class="small-1 columns edit">
-        <%= link_to '<i class="fi-pencil"></i>'.html_safe, edit_task_path(task) %>
+        <%= link_to '<i class="fi-pencil"></i>'.html_safe, edit_task_path(task), title: 'Edit task details' %>
       </div>
       <div id="taskDetail_<%= task.id -%>" class="task_detail reveal" data-reveal>
         <%= render partial: 'task_detail', locals: { task: task } %>
