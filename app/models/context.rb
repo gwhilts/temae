@@ -1,16 +1,16 @@
 class Context < ActiveRecord::Base
   # Icons
-  ICONS = {
-    'inbox'    => 'fi-download',
-    'github'   => 'fi-social-github',
-    'home'     => 'fi-home',
-    'office'   => 'fi-torso-business',
-    'phone'    => 'fi-telephone',
-    'errands'   => 'fi-marker',
-    'email'    => 'fi-mail',
-    'shopping' => 'fi-shopping-cart',
-    'generic'  => 'fi-list-thumbnails'
-  }
+  ICONS = [
+    'inbox',
+    'github',
+    'home',
+    'office',
+    'phone',
+    'errands',
+    'email',
+    'shopping',
+    'generic'
+  ]
   
   # Relations
   has_many :tasks
@@ -22,7 +22,7 @@ class Context < ActiveRecord::Base
 
   # Validations
   validates :name, :user, :icon, presence: true
-  validates :icon, inclusion: { in: ICONS.keys, message: "must be one of: #{ ICONS.keys }." }
+  validates :icon, inclusion: { in: ICONS, message: "must be one of: #{ ICONS }." }
 
   # Callbacks
   after_initialize :set_defaults 
