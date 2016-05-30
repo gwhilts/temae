@@ -16,7 +16,7 @@
     <%= task.due ? task.due.to_formatted_s(:short) : "&nbsp;".html_safe %>
   </div>
 </div>
-<% if task.url -%>
+<% unless task.url.empty? -%>
 <div class="row">
   <div class="small-2 columns lbl">URL:</div>
   <div class="small-10 columns">
