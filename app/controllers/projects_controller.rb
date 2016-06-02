@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
+  layout 'groups'
   before_action :set_project, only: [:edit, :update, :destroy]
 
 
   # GET /projects
   def index
-    # Fetch all @projects
-    # render view
+    @projects = Project.where(user: current_user)
   end
 
   # GET /projects/new

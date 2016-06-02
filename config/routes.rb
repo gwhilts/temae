@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get '/tasks/by_project/:id(.:format)', to: 'tasks#by_project', as: 'tasks_by_project'
   get '/tasks/by_context/:id(.:format)', to: 'tasks#by_context', as: 'tasks_by_context'
   resources :tasks
+  resources :projects
 
 end

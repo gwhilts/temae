@@ -1,0 +1,15 @@
+<div class="row">
+  <div id="page-title" class="small-4 small-centered medium-uncentered">Manage Projects</div>
+</div>
+
+
+<div>
+  <% @projects.each do |project| %>
+    <div id="<%= project.id -%>" class="project row collapse">
+      <div class="small-12">
+        <%= project.name %>
+      </div>
+    </div>
+  <% end -%>
+</div>
+

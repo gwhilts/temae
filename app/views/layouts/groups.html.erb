@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= content_for?(:title) ? yield(:title) : "Temae: Enlighted Task Management" %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="has-off-canvas">
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <!-- Title Bar -->
+        <div class="title-bar">
+          <div class="title-bar-left">
+            <button class="menu-icon" type="button"></button>
+            <%= link_to('Temae', :root, class: 'title-bar-title' ) %>
+          </div>
+          <div class="title-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li>
+                <%= link_to('<i class="fi-marker"></i>'.html_safe, '#', id: 'contexts_link', title: "Manage Contexts")  %>
+              </li>
+              <li>
+                <%= link_to('<i class="fi-clipboard-notes"></i>'.html_safe, projects_path, id: 'projects_link', title: "Manage Projects")  %>
+              </li>
+              <li>
+                <%= link_to('log out', destroy_user_session_path, method: :delete, id: 'logout-button', class: 'tiny alert button') %>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- off-canvas left menu -->
+        <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+          <%= yield :side_menu %>
+        </div>
+
+        <!-- original content goes in this container -->
+        <div class="off-canvas-content" data-off-canvas-content>
+          <div id="main" class="row column">
+             <% if notice.present? %>
+               <div class="callout success" data-closable>
+                 <%= notice %>
+                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                   <span aria-hidden="true"><i class="fi-x-circle"></i></span>
+                 </button>
+               </div>
+             <% end -%>
+  
+            <% if alert.present? %>
+              <div class="callout alert" data-closable>
+                <%= alert %>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true"><i class="fi-x-circle"></i></span>
+                </button>
+              </div>
+            <% end -%>
+            <%= yield %>
+          </div>
+        </div>
+      <!-- close wrapper, no more content after this -->
+      </div>
+    </div>
+  </body>
+</html>
